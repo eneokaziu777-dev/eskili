@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eskili – Ati i Tragjedisë Greke</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--gold:#c9a24b;--panel:rgba(244,239,230,.97);--txt:#1b2540;--mut:#5a6073;--card:#fff;--line:#d9cfb8}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--panel:rgba(18,32,63,.97);--txt:#efe8d8;--mut:#aab2c8;--card:#1a2b52;--line:#34457a}}
+:root[data-theme="dark"]{--panel:rgba(18,32,63,.97);--txt:#efe8d8;--mut:#aab2c8;--card:#1a2b52;--line:#34457a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:#0b1630;color:#f4efe6;font-family:"Cormorant Garamond",Georgia,serif}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+button{font:inherit;color:inherit;cursor:pointer}
+#top{position:fixed;left:0;right:0;top:0;z-index:10;display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 12px) 18px 26px;background:linear-gradient(#0b1630e6,#0b163000);pointer-events:none}
+#top>*{pointer-events:auto}
+.brand{line-height:1.05}.brand small{display:block;font:500 .6rem Cinzel,serif;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+.brand b{font:700 1.7rem Cinzel,serif;letter-spacing:.12em}.brand span{display:block;font-style:italic;color:#d9cfb8;font-size:1rem}
+#nav{display:flex;gap:8px;overflow-x:auto;max-width:100%;scrollbar-width:none}
+#nav button,#reset{white-space:nowrap;background:#0b1630b3;border:1px solid var(--gold);padding:8px 14px;border-radius:2px;font:500 .68rem Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;transition:.25s;backdrop-filter:blur(6px)}
+#nav button:hover,#reset:hover{background:var(--gold);color:#0b1630}
+#reset{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:9}
+#hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 46px);z-index:5;font-style:italic;color:#d9cfb8;text-shadow:0 1px 6px #000;text-align:center;width:90%;pointer-events:none;transition:opacity 1s}
+#credit{position:fixed;left:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:5;font:500 .75rem Cinzel,serif;letter-spacing:.18em;color:var(--gold);text-shadow:0 1px 6px #000}
+#ld{position:fixed;inset:0;z-index:50;background:#0b1630;display:grid;place-items:center;font:500 .9rem Cinzel,serif;letter-spacing:.3em;color:var(--gold);text-align:center;padding:20px;transition:opacity .9s}
+#panel{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:20;background:var(--panel);color:var(--txt);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .55s cubic-bezier(.2,.8,.2,1),width .4s;box-shadow:-20px 0 60px #0006;padding-top:env(safe-area-inset-top,0px);backdrop-filter:blur(8px)}
+#panel.on{transform:none}#panel.wide{width:min(780px,100%)}
+#close{position:absolute;right:10px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:#0b1630cc;font-size:1.3rem;line-height:1}
+.art{height:200px;background:radial-gradient(circle at 50% 70%,#2a4780,#0b1630);border-bottom:2px solid var(--gold);flex:none}
+.art canvas{width:100%;height:100%;display:block}
+#pbody{flex:1;overflow-y:auto;padding:18px 22px 24px;font-size:1.2rem;line-height:1.45}
+#pnav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 18px calc(env(safe-area-inset-bottom,0px) + 10px);border-top:1px solid var(--line)}
+#pnav button,.go{border:1px solid var(--gold);background:transparent;color:var(--txt);padding:8px 14px;font:500 .68rem Cinzel,serif;letter-spacing:.12em;text-transform:uppercase}
+#pnav button:hover:not(:disabled),.go:hover{background:var(--gold);color:#0b1630}#pnav button:disabled{opacity:.35;cursor:default}
+#pnav span{font:500 .75rem Cinzel,serif;color:var(--mut)}
+.kick{margin:0;font:500 .65rem Cinzel,serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+h2{font:700 1.6rem Cinzel,serif;margin:.2rem 0 .8rem;letter-spacing:.04em}
+h3{font:700 .85rem Cinzel,serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:1.3rem 0 .4rem}
+h4{font:700 1.2rem Cinzel,serif;margin:.6rem 0 .3rem}
+#pbody p{margin:.3rem 0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:.4rem 0 1rem}
+.facts div{background:var(--card);border:1px solid var(--line);padding:8px 10px;border-radius:4px}
+.facts dt{font:500 .6rem Cinzel,serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}.facts dd{margin:2px 0 0;font-weight:600;line-height:1.2}
+.card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);padding:.55rem .9rem;margin:.55rem 0;border-radius:4px}
+.card b{font:700 .9rem Cinzel,serif}
+.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:.3rem 0;padding:0}
+.chips li{border:1px solid var(--gold);padding:2px 10px;border-radius:20px;font-size:1rem}
+.wk{display:block;width:100%;text-align:left;background:var(--card);color:var(--txt);border:1px solid var(--line);border-left:3px solid var(--gold);padding:.6rem .9rem;margin:.5rem 0;border-radius:4px;transition:.2s}
+.wk:hover{transform:translateX(5px);border-color:var(--gold)}.wk b{display:block;font:700 .95rem Cinzel,serif}.wk span{font-size:1.05rem;color:var(--mut)}
+.trk{display:flex;overflow-x:auto;padding:.4rem 0 .8rem}
+.dot{flex:none;width:92px;background:none;border:0;color:var(--txt);text-align:center;position:relative;padding-top:20px}
+.dot:before{content:"";position:absolute;left:0;right:0;top:8px;height:2px;background:var(--line)}
+.dot i{position:absolute;left:50%;top:1px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--c);border:3px solid var(--panel);box-shadow:0 0 0 1px var(--c);transition:.2s}
+.dot.on i{transform:scale(1.5)}.dot span{font:700 .62rem Cinzel,serif;opacity:.7}.dot.on span{opacity:1}
+.tag{display:inline-block;color:#fff;font:500 .6rem Cinzel,serif;letter-spacing:.16em;text-transform:uppercase;padding:2px 10px;border-radius:2px}
+.tld{background:var(--card);border:1px solid var(--line);padding:.7rem 1rem;border-radius:4px;min-height:120px}
+.qp{height:4px;background:var(--line);margin-bottom:12px}.qp i{display:block;height:100%;background:var(--gold);transition:width .4s}
+.qq{font:700 1.15rem Cinzel,serif;text-transform:none;letter-spacing:.02em;color:var(--txt);margin:.2rem 0 .8rem}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;padding:.6rem .9rem;background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:4px;font-size:1.15rem;transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--gold);transform:translateX(4px)}.opt:disabled{cursor:default}
+.opt.ok{background:#2f7d4f;color:#fff;border-color:#2f7d4f}.opt.bad{background:#a43a3a;color:#fff;border-color:#a43a3a}
+.fb{margin:.8rem 0 .5rem}.res{text-align:center;padding:1rem 0}.big{font:700 3rem Cinzel,serif;color:var(--gold)}
+.by{font:500 .8rem Cinzel,serif;letter-spacing:.18em;color:var(--gold);margin-top:1.4rem}
+@media(max-width:760px){#panel,#panel.wide{top:auto;width:100%;height:70%;transform:translateY(105%);border-radius:18px 18px 0 0;padding-top:0}#panel.on{transform:none}#close{top:8px}.art{height:140px}.brand b{font-size:1.25rem}.brand span{display:none}#top{flex-direction:column;align-items:flex-start;gap:8px}#hint{font-size:.95rem;bottom:calc(env(safe-area-inset-bottom,0px) + 50px)}#reset{font-size:.58rem;padding:6px 9px}#credit{font-size:.62rem}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<header id="top">
+<div class="brand"><small>Muze virtual 3D</small><b>ESKILI</b><span>Ati i tragjedisë greke</span></div>
+<nav id="nav"><button data-open="A">Jeta e Eskilit</button><button data-open="D">Eksploro veprat</button><button data-open="E">Greqia në kohën e Eskilit</button><button data-open="Q">Kuici</button><button data-open="F">Trashëgimia</button></nav>
+</header>
+<div id="hint">Rrotullo, zmadho dhe kliko mbi nyjet e artë të hartës për të eksploruar.</div>
+<div id="credit">Punoi: Eneo Kaziu</div>
+<button id="reset">Pamja e përgjithshme</button>
+<aside id="panel" aria-live="polite">
+<button id="close" aria-label="Mbyll panelin">&times;</button>
+<div class="art"><canvas id="mini"></canvas></div>
+<div id="pbody"></div>
+<div id="pnav"><button id="prev">Para</button><span id="cnt"></span><button id="next">Tjetra</button></div>
+</aside>
+<div id="ld">DUKE NGARKUAR MUZEUN</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+if(!window.THREE||!THREE.OrbitControls){document.getElementById('ld').textContent='Motori 3D nuk u ngarkua. Kontrollo lidhjen dhe rifresko faqen.';return}
+var T=THREE,$=function(s){return document.querySelector(s)},clamp=function(v,a,b){return Math.min(b,Math.max(a,v))};
+var ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2},back=function(t){return 1+2.70158*Math.pow(t-1,3)+1.70158*Math.pow(t-1,2)};
+var shuf=function(a){for(var i=a.length-1;i>0;i--){var j=Math.random()*(i+1)|0,t=a[i];a[i]=a[j];a[j]=t}return a};
+
+/* ---------- PËRMBAJTJA ---------- */
+var H=function(k,t){return '<p class="kick">'+k+'</p><h2>'+t+'</h2>'},
+sec=function(h){return '<h3>'+h+'</h3>'},
+card=function(h,p){return '<div class="card"><b>'+h+'</b><p>'+p+'</p></div>'},
+chips=function(a){return '<ul class="chips">'+a.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'},
+facts=function(a){return '<dl class="facts">'+a.map(function(x){return '<div><dt>'+x[0]+'</dt><dd>'+x[1]+'</dd></div>'}).join('')+'</dl>'},
+work=function(o){return H(o.k,o.t)+facts(o.f)+'<p>'+o.p+'</p>'+sec('Personazhet kryesore')+chips(o.c)+sec('Temat')+chips(o.th)+sec('Veçoritë letrare')+o.v.map(function(x){return card(x[0],x[1])}).join('')};
+var W={
+W1:{k:"Vepra 1",t:"Prometeu i Mbërthyer",s:"prom",f:[["Lloji","Tragjedi"],["Viti","I pasigurt"],["Zeusi","Dënon Prometeun"],["Vendi","Skaji i botës"]],
+p:"Zeusi e dënon Prometeun, titanin që ua dha zjarrin njerëzve: e mbërthen në një shkëmb të largët. Prometeu nuk pendohet dhe nuk e zbulon një të fshehtë që lidhet me sundimin e Zeusit; në fund shkëmbi e përpin në humnerë.",
+c:["Prometeu","Kratos dhe Bia","Hefesti","Okeani","Ioja","Hermesi","Kori i Okeanideve"],th:["Rebelimi","Liria","Pushteti","Sakrifica"],
+v:[["Konflikt kryesor","Përplasja midis pushtetit hyjnor dhe qëndresës individuale."],["Ndërtimi","Veprimi lëviz pak; pesha bie mbi fjalimet dhe mbi qëndresën e heroit të mbërthyer."],["Shënim","Datimi dhe autorësia e veprës diskutohen nga studiuesit; ajo ruhet bashkë me gjashtë tragjeditë e tjera të Eskilit."]]},
+W2:{k:"Vepra 2",t:"Oresteia (Orestiada)",s:"ores",f:[["Viti","458 p.e.s."],["Trilogji","Agamemnoni, Koeforet, Eumenidet"],["Vendi","Argos dhe Athinë"],["Çmimi","Vendi i parë"]],
+p:"Agamemnoni kthehet nga Troja dhe vritet nga Klitemnestra dhe Egjisti. Te Koeforet, Orest, i nxitur nga Apolloni dhe Elektra, hakmerret mbi nënën. Te Eumenidet, Erinjet e ndjekin; Athina themelon një gjykatë dhe Orest lirohet.",
+c:["Agamemnoni","Klitemnestra","Egjisti","Kasandra","Orest","Elektra","Apolloni","Athina","Erinjet"],th:["Drejtësia","Hakmarrja","Fati","Ligji dhe qyteti"],
+v:[["Kalimi kryesor","Nga hakmarrja personale drejt drejtësisë së organizuar nga gjykata."],["Trilogjia e ruajtur","Është e vetmja trilogji e plotë që na ka mbërritur nga tragjedia greke."],["Kori","Kori komenton ngjarjet dhe në Eumenidet bëhet vetë personazh."]]},
+W3:{k:"Vepra 3",t:"Persët",s:"pers",f:[["Viti","472 p.e.s."],["Vendi","Suza, oborri persian"],["Beteja","Salamina, 480 p.e.s."],["Çmimi","Vendi i parë"]],
+p:"Në Suza, mbretëresha Atosa dhe pleqtë e Persisë presin lajme nga lufta. Një lajmëtar tregon disfatën në Salaminë, fantazma e Darit shfaqet dhe Kserksi kthehet me rroba të grisura.",
+c:["Atosa","Kori i pleqve persianë","Lajmëtari","Fantazma e Darit","Kserksi"],th:["Kryelartësia","Ndëshkimi hyjnor","Lufta","Humbja"],
+v:[["Ngjarje reale","Është e vetmja tragjedi e ruajtur e frymëzuar nga një ngjarje historike reale."],["Pikëpamja","Fitorja greke shihet nga ana e të mundurve, pa gëzim të ashpër."],["Rëndësia","Është vepra më e vjetër e teatrit grek që na ka ardhur e plotë."]]},
+W4:{k:"Vepra 4",t:"Shtatë kundër Tebës",s:"seven",f:[["Viti","467 p.e.s."],["Vendi","Theba"],["Portat","Shtatë"],["Mallkimi","Familja e Edipit"]],
+p:"Theba rrethohet nga shtatë heronj, secili përpara një porte. Mbreti Eteokli cakton mbrojtësit dhe kur mëson se te porta e shtatë e pret vëllai i tij Polinik, vendos ta përballojë. Të dy vëllezërit vriten mes tyre.",
+c:["Eteokli","Lajmëtari","Kori i grave tebane","Polinik (jashtë skene)"],th:["Fati","Konflikti familjar","Lufta","Mallkimi"],
+v:[["Tragjedia e një familjeje","Vëmendja përqendrohet te mallkimi i shtëpisë së Edipit."],["Skena e portave","Lajmëtari përshkruan shtatë sulmuesit dhe Eteokli u ndan mbrojtësit."],["Trilogjia","Është pjesa e fundit e një trilogjie për Labdakidët, që nuk ruhet e plotë."]]},
+W5:{k:"Vepra 5",t:"Lutëset",s:"suppl",f:[["Viti","Rreth 463 p.e.s. (diskutohet)"],["Vendi","Argos"],["Kori","Danaidat"],["Kërkesa","Strehim"]],
+p:"Danaidat, vajzat e Danaut, ikin nga Egjipti për të shmangur martesën e dhunshme me kushërinjtë. Kërkojnë strehim në Argos; mbreti Pelasg e vë çështjen para qytetarëve, të cilët e pranojnë kërkesën.",
+c:["Danai","Kori i Danaidave","Pelasgu","Lajmëtari egjiptian"],th:["Drejtësia","Azili","Martesa","Mbrojtja e të pambrojturve"],
+v:[["Kori protagonist","Kori nuk është sfond: ai drejton vetë veprimin dhe këndon pjesën më të madhe të tekstit."],["Vendimi i popullit","Veprimi vendoset me votën e qytetarëve të Argosit, një pasqyrë e demokracisë athinase."],["Trilogjia","Vepra hapte një trilogji me Egjiptianët dhe Danaidat, që nuk ruhen."]]}};
+var TL=[
+{y:"525/524",g:"Jeta",t:"Lindja e Eskilit",p:"Eskili lind në Eleusis, pranë Athinës, në një familje fisnike."},
+{y:"508/507",g:"Historia",t:"Reformat e Klisthenit",p:"Athina hedh themelet e demokracisë: qytetarët vendosin në asamble."},
+{y:"490",g:"Historia",t:"Beteja e Maratonës",p:"Athinasit fitojnë mbi persët. Eskili merr pjesë dhe vëllai i tij Kinegeiri plagoset rëndë."},
+{y:"484",g:"Jeta",t:"Fitorja e parë në Dionisia",p:"Sipas shënimeve antike, Eskili fiton për herë të parë në garën tragjike."},
+{y:"480",g:"Historia",t:"Beteja e Salaminës",p:"Flota greke mund atë persiane. Disa burime e përmendin Eskilin mes luftëtarëve."},
+{y:"472",g:"Vepra",t:"Persët",p:"Vepra shfaqet në skenë dhe fiton çmimin e parë."},
+{y:"467",g:"Vepra",t:"Shtatë kundër Tebës",p:"Tragjedia përfundon trilogjinë për shtëpinë e Edipit."},
+{y:"rreth 463",g:"Vepra",t:"Lutëset",p:"Datimi diskutohet; dokumentet e reja e vendosin në vitet 460."},
+{y:"458",g:"Vepra",t:"Oresteia",p:"Trilogjia fiton çmimin e parë dhe e mbyll krijimtarinë e tij në Athinë."},
+{y:"456/455",g:"Jeta",t:"Vdekja në Gela",p:"Eskili vdes në Gela, në Sicili, larg qytetit që e ka formuar."}];
+var QZ=[
+{q:"Ku lindi Eskili?",o:["Në Eleusis, pranë Athinës","Në Spartë","Në Gela","Në Suza"],e:"Eskili lindi në Eleusis, qytet i Misterieve Eleusine."},
+{q:"Cila risi i atribuohet Eskilit?",o:["Futja e aktorit të dytë","Futja e aktorit të tretë","Heqja e korit","Teatri prej guri"],e:"Aristoteli ia atribuon aktorin e dytë; i treti i takon Sofokliut."},
+{q:"Cila vepër e tij bazohet në një ngjarje historike reale?",o:["Persët","Lutëset","Prometeu i Mbërthyer","Koeforet"],e:"Persët trajton disfatën e persëve në Salaminë."},
+{q:"Nga cilat pjesë përbëhet Oresteia?",o:["Agamemnoni, Koeforet, Eumenidet","Edipi, Antigona, Elektra","Persët, Lutëset, Proteu","Medea, Hipoliti, Bakantet"],e:"Është trilogjia e vetme e plotë e ruajtur nga tragjedia greke."},
+{q:"Ku vdiq Eskili?",o:["Në Gela, në Sicili","Në Athinë","Në Eleusis","Në Maraton"],e:"Vdiq në Gela, rreth vitit 456/455 p.e.s."},
+{q:"Në cilin vit u zhvillua beteja e Salaminës?",o:["480 p.e.s.","490 p.e.s.","458 p.e.s.","431 p.e.s."],e:"Salamina u zhvillua në vitin 480 p.e.s.; Maratona në 490."},
+{q:"Çfarë ndodh te Eumenidet?",o:["Hakmarrja zëvendësohet nga një gjykatë e qytetit","Agamemnoni kthehet nga Troja","Prometeu çlirohet nga shkëmbi","Kserksi kthehet në Suza"],e:"Athina themelon gjykatën dhe Erinjet bëhen Eumenide, mbrojtëse të qytetit."},
+{q:"Pse ndëshkohet Prometeu nga Zeusi?",o:["Sepse ua dha zjarrin njerëzve","Sepse humbi një garë teatrale","Sepse vrau një vëlla","Sepse shkatërroi Trojën"],e:"Zjarri që ua dha njerëzve është shkaku i dënimit."},
+{q:"Cilët janë dy vëllezërit te Shtatë kundër Tebës?",o:["Eteokli dhe Polinik","Orest dhe Pilad","Kserksi dhe Dari","Zeusi dhe Prometeu"],e:"Eteokli dhe Polinik, bijtë e Edipit, vriten mes tyre."},
+{q:"Cila vepër e ka korin protagonist, përmes vajzave që kërkojnë strehim?",o:["Lutëset","Persët","Shtatë kundër Tebës","Agamemnoni"],e:"Te Lutëset, kori i Danaidave drejton vetë veprimin."}];
+var P={
+A:{s:"life",html:H("Dega A","Lindja dhe jeta")+facts([["Lindja","Rreth 525/524 p.e.s."],["Vendlindja","Eleusis, pranë Athinës"],["Familja","Fisnike; babai Euforion"],["Vdekja","Rreth 456/455 p.e.s., Gela (Sicili)"]])+
+card("Origjina","Eskili lindi në Eleusis, qytetin e Misterieve Eleusine, në një familje fisnike athinase. Vëllai i tij, Kinegeiri, u plagos rëndë në betejën e Maratonës.")+
+card("Vitet e fundit","U largua drejt Sicilisë, ku e priti Hieroni i Sirakuzës dhe ku Persët u shfaqën sërish. Arsyet e qëndrimit të tij atje diskutohen nga studiuesit.")+
+card("Vdekja","Vdiq në Gela. Një legjendë e vonë thotë se një shqiponjë ia rrëzoi një breshkë mbi kokë; nuk ka siguri historike. Epitafi që i atribuohet përmend Maratonën, jo poezinë.")},
+B:{s:"educ",html:H("Dega B","Shkollimi dhe formimi")+
+card("Formimi kulturor","Athina e shekullit VI–V p.e.s. nuk kishte shkollë tragjedie. Formimi vinte nga epet e Homerit, himnet, festat qytetare dhe jeta e përbashkët në qytet.")+
+card("Feja, miti dhe tradita","Eleusisi e afroi me Misteret e Demetrës dhe të Persefonës. Sipas Pausanias, Dionisi iu shfaq në ëndërr kur ruante një vreshtë dhe e nxiti të shkruante tragjedi.")+
+card("Luftërat greko-persiane","Luftoi në Maratonë (490 p.e.s.) dhe, sipas disa burimeve antike, edhe në Salaminë (480). Kjo përvojë ushqeu veprën Persët dhe idenë e ndëshkimit të kryelartësisë.")+
+card("Jeta teatrale e Athinës","Konkurroi në Dionisitë e Mëdha që nga fillimi i shek. V p.e.s. dhe fitoi për herë të parë rreth vitit 484 p.e.s.")},
+C:{s:"stage",html:H("Dega C","Për çfarë shquhet?")+
+card("Ati i tragjedisë","Titulli i jepet nga tradita, sepse e ngriti tragjedinë nga kënga e korit në dramë të vërtetë.")+
+card("Aktori i dytë","Aristoteli ia atribuon futjen e aktorit të dytë. Kështu skena fitoi dialog dhe përplasje mes personazheve.")+
+card("Dialogu dhe konflikti","Roli i korit u zvogëlua dhe konflikti dramatik u bë qendra e veprës.")+
+card("Kori, maskat, kostumet","Kori këndon dhe komenton; aktorët mbanin maska. Tradita antike ia lidh Eskilit kostumet e shfaqjet madhështore.")+
+card("Temat","Drejtësia, fati, hyjnitë, hakmarrja dhe përgjegjësia njerëzore.")+
+card("Trilogjia e lidhur","Tri tragjedi mund të tregonin një histori të vetme, si te Oresteia.")},
+D:{s:"fame",html:H("Dega D","Veprat kryesore")+'<p>Sipas burimeve antike shkroi mbi 70 vepra; ruhen vetëm shtatë tragjedi të plota. Zgjidh një vepër:</p>'+
+["W1","W2","W3","W4","W5"].map(function(k,i){var s={W1:"Rebelimi dhe pushteti",W2:"Nga hakmarrja te gjykata",W3:"Salamina nga pala e armikut",W4:"Dy vëllezër, një mallkim",W5:"Kori kërkon mbrojtje"}[k];return '<button class="wk" data-open="'+k+'"><b>'+(i+1)+'. '+W[k].t+'</b><span>'+s+'</span></button>'}).join('')},
+E:{s:"hist",html:H("Dega E","Greqia në kohën e Eskilit")+
+card("Shekulli V p.e.s.","Periudha klasike: Athina bëhet qendër politike, detare dhe kulturore e botës greke.")+
+card("Athina dhe demokracia","Reformat e Klisthenit hapën rrugën e demokracisë; qytetarët vendosnin në asamble dhe gjykata.")+
+card("Luftërat greko-persiane","Maratona (490) dhe Salamina (480) mbrojtën Greqinë dhe forcuan krenarinë athinase.")+
+card("Teatri dhe festivalet fetare","Tragjedia luhej në Dionisitë e Mëdha, festë për nder të Dionisit, në Teatrin e Dionisit pranë Akropolit.")+
+card("Rëndësia e tragjedisë","Teatri ishte ngjarje qytetare: shikuesit ndiqnin dilemat e drejtësisë, fesë dhe pushtetit, dhe poetët garonin publikisht.")+
+sec("Vija kohore interaktive")+'<div id="tl"></div>'},
+Q:{s:null,html:H("Vlerësim","Kuici: sa e njeh Eskilin?")+'<div id="qz"></div>'},
+F:{s:"legacy",html:H("Përfundimi","Trashëgimia e Eskilit")+
+'<p>Eskili e shndërroi këngën rituale të korit në teatër të vërtetë, me aktorë, dialog dhe konflikt. Sofokliu dhe Euripidi ndoqën rrugën që ai hapi; Sofokliu shtoi aktorin e tretë.</p>'+
+'<p>Në komedinë Bretkosat, Aristofani e vë Eskilin përballë Euripidit në botën e nëndheshme, shenjë se Athina e çmonte si poetin e madh edhe pas vdekjes. Sipas traditës, qyteti lejoi që veprat e tij të vihen sërish në skenë.</p>'+
+'<p>Oresteia dhe Prometeu kanë frymëzuar shkrimtarë të mëvonshëm, nga Seneka te Shelley, O’Neill dhe Sartre. Ideja se konflikti zgjidhet me gjykim publik e jo me hakmarrje mbetet e gjallë sot.</p>'+
+card("Çfarë ruan sot","Dialogu dramatik, përplasja e vlerave, kori si zë i komunitetit dhe pyetja se si lind drejtësia.")+
+'<p class="by">Punoi: Eneo Kaziu</p>'}};
+Object.keys(W).forEach(function(k){P[k]={s:W[k].s,html:work(W[k])}});
+var NAME={A:"A · Lindja dhe jeta",B:"B · Shkollimi dhe formimi",C:"C · Për çfarë shquhet?",D:"D · Veprat kryesore",E:"E · Greqia në kohën e Eskilit",F:"F · Trashëgimia e Eskilit",W1:"1 · Prometeu i Mbërthyer",W2:"2 · Oresteia",W3:"3 · Persët",W4:"4 · Shtatë kundër Tebës",W5:"5 · Lutëset"};
+var ORDER=["A","B","C","D","W1","W2","W3","W4","W5","E","Q","F"];
+
+/* ---------- TEKSTURA ---------- */
+function cv(w,h){var c=document.createElement('canvas');c.width=w;c.height=h;return c}
+function tex(c,rx,ry){var t=new T.CanvasTexture(c);t.encoding=T.sRGBEncoding;t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(rx||1,ry||1);t.anisotropy=4;return t}
+function marbleTex(rx,ry){var c=cv(512,512),x=c.getContext('2d');x.fillStyle='#efe9dc';x.fillRect(0,0,512,512);
+for(var i=0;i<3500;i++){x.fillStyle='rgba('+(200+Math.random()*40|0)+','+(195+Math.random()*40|0)+','+(180+Math.random()*40|0)+',.07)';x.fillRect(Math.random()*512,Math.random()*512,2+Math.random()*7,2+Math.random()*7)}
+for(i=0;i<22;i++){x.strokeStyle='rgba(110,115,130,'+(.08+Math.random()*.14)+')';x.beginPath();var px=Math.random()*512,py=Math.random()*512;x.moveTo(px,py);for(var k=0;k<12;k++){px+=(Math.random()-.4)*60;py+=(Math.random()-.5)*60;x.lineTo(px,py)}x.stroke()}
+return tex(c,rx,ry)}
+function fluteTex(){var c=cv(512,8),x=c.getContext('2d');for(var i=0;i<512;i++){var v=Math.round(222+22*Math.cos(i/512*Math.PI*2*16));x.fillStyle='rgb('+v+','+(v-4)+','+(v-16)+')';x.fillRect(i,0,1,8)}return tex(c,1,1)}
+function keyTex(rx){var c=cv(256,64),x=c.getContext('2d');x.fillStyle='#14234a';x.fillRect(0,0,256,64);x.strokeStyle=x.fillStyle='#c9a24b';x.lineWidth=5;x.lineCap='square';
+for(var i=0;i<4;i++){var o=i*64;x.beginPath();x.moveTo(o+8,56);x.lineTo(o+8,8);x.lineTo(o+56,8);x.lineTo(o+56,44);x.lineTo(o+26,44);x.lineTo(o+26,26);x.lineTo(o+40,26);x.stroke()}
+x.fillRect(0,0,256,3);x.fillRect(0,61,256,3);return tex(c,rx,1)}
+function plate(lines,w,h,bg){var c=cv(w,h),x=c.getContext('2d');if(bg){x.fillStyle=bg;x.fillRect(0,0,w,h);x.strokeStyle='#c9a24b';x.lineWidth=6;x.strokeRect(10,10,w-20,h-20)}
+x.textAlign='center';x.textBaseline='middle';lines.forEach(function(l){x.font='700 '+l[1]+'px Cinzel, Georgia, serif';x.fillStyle=l[2];if(!bg){x.shadowColor='#000a';x.shadowBlur=18}x.fillText(l[0],w/2,l[3])});return tex(c)}
+function label(txt,k){var c=cv(640,128),x=c.getContext('2d'),s=38;x.font='700 '+s+'px Cinzel, Georgia, serif';while(x.measureText(txt).width>570)x.font='700 '+(--s)+'px Cinzel, Georgia, serif';var w=x.measureText(txt).width+48,l=320-w/2;
+x.fillStyle='rgba(11,22,48,.86)';x.strokeStyle='#c9a24b';x.lineWidth=3;x.beginPath();x.moveTo(l+30,24);x.arcTo(l+w,24,l+w,104,30);x.arcTo(l+w,104,l,104,30);x.arcTo(l,104,l,24,30);x.arcTo(l,24,l+w,24,30);x.closePath();x.fill();x.stroke();
+x.fillStyle='#f4efe6';x.textAlign='center';x.textBaseline='middle';x.fillText(txt,320,66);
+var sp=new T.Sprite(new T.SpriteMaterial({map:tex(c),transparent:true,depthTest:false,depthWrite:false,fog:false}));sp.scale.set(6.4*k,1.28*k,1);sp.renderOrder=20;return sp}
+
+/* ---------- SKENA KRYESORE ---------- */
+function init(){
+var cvs=$('#c'),R=new T.WebGLRenderer({canvas:cvs,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));R.outputEncoding=T.sRGBEncoding;R.shadowMap.enabled=true;R.shadowMap.type=T.PCFSoftShadowMap;R.toneMapping=T.ACESFilmicToneMapping;R.toneMappingExposure=1.05;
+var scene=new T.Scene(),cam=new T.PerspectiveCamera(48,1,.1,220);
+var sk=cv(4,512),sx=sk.getContext('2d'),gr=sx.createLinearGradient(0,0,0,512);gr.addColorStop(0,'#060d22');gr.addColorStop(.55,'#17305f');gr.addColorStop(1,'#caa98a');sx.fillStyle=gr;sx.fillRect(0,0,4,512);
+var skt=new T.CanvasTexture(sk);skt.encoding=T.sRGBEncoding;scene.background=skt;scene.fog=new T.Fog(0x1a2f58,45,110);
+var C=new T.OrbitControls(cam,cvs);C.enableDamping=true;C.dampingFactor=.06;C.enablePan=false;C.minDistance=3;C.maxDistance=48;C.maxPolarAngle=1.52;C.autoRotate=true;C.autoRotateSpeed=.45;C.addEventListener('start',function(){C.autoRotate=false});
+scene.add(new T.HemisphereLight(0xcfd8ff,0x8a7a5a,.8));
+var sun=new T.DirectionalLight(0xfff0d0,1.4);sun.position.set(14,28,16);sun.castShadow=true;var ss=innerWidth<800?1024:2048;sun.shadow.mapSize.set(ss,ss);var sc=sun.shadow.camera;sc.left=-28;sc.right=28;sc.top=28;sc.bottom=-28;sc.near=1;sc.far=90;sun.shadow.bias=-.0004;scene.add(sun);
+var gl=new T.PointLight(0xffc870,.9,34);gl.position.set(0,9,3);scene.add(gl);
+var mar=new T.MeshStandardMaterial({map:marbleTex(1,1),roughness:.38,metalness:.02}),
+gold=new T.MeshStandardMaterial({color:0xc9a24b,metalness:.5,roughness:.35,emissive:0x3a2a08}),
+dark=new T.MeshStandardMaterial({color:0x1b2a55,roughness:.5});
+var hit=[],glow=[],nodes=[],byId={};
+function M(g,m,x,y,z,sh){m.position.set(x||0,y||0,z||0);m.castShadow=sh!==false;m.receiveShadow=true;g.add(m);return m}
+var BX=function(w,h,d,m){return new T.Mesh(new T.BoxGeometry(w,h,d),m)},CY=function(a,b,h,m,s){return new T.Mesh(new T.CylinderGeometry(a,b,h,s||24),m)},SP=function(r,m){return new T.Mesh(new T.SphereGeometry(r,28,18),m)};
+function addGlow(obj,open){var o={kind:'glow',mats:[],v:0,t:0,open:open},mp=new Map();obj.traverse(function(m){if(!m.isMesh)return;var c=mp.get(m.material);if(!c){c=m.material.clone();c.emissive=new T.Color(0x9a7a2a);c.emissiveIntensity=0;mp.set(m.material,c);o.mats.push(c)}m.material=c;m.userData.owner=o;hit.push(m)});glow.push(o);return o}
+/* dyshemeja, shkallët, kornizat */
+var fl=new T.Mesh(new T.CircleGeometry(20.5,72),new T.MeshStandardMaterial({map:marbleTex(5,5),roughness:.3,metalness:.05}));fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;scene.add(fl);
+for(var i=0;i<3;i++){var st=CY(21.6+i*1.1,21.6+i*1.1,.3,mar,72);st.position.y=-.17-i*.3;st.receiveShadow=true;scene.add(st)}
+var gnd=new T.Mesh(new T.CircleGeometry(120,48),new T.MeshStandardMaterial({color:0x14234a,roughness:1}));gnd.rotation.x=-Math.PI/2;gnd.position.y=-1.2;scene.add(gnd);
+[[15.7,15.95],[5.5,5.65]].forEach(function(r){var rg=new T.Mesh(new T.RingGeometry(r[0],r[1],96),gold);rg.rotation.x=-Math.PI/2;rg.position.y=.015;scene.add(rg)});
+var kt=keyTex(15),dais=new T.Mesh(new T.CylinderGeometry(4.8,5,.5,64),[new T.MeshStandardMaterial({map:kt,roughness:.5}),mar,mar]);dais.position.y=.25;dais.receiveShadow=true;dais.castShadow=true;scene.add(dais);
+/* bust */
+function bust(s,beard,mt){var g=new T.Group();
+M(g,SP(1,mt),0,.62,0).scale.set(1.35,.62,.72);M(g,CY(.34,.4,.6,mt,20),0,1.15,0);M(g,SP(.72,mt),0,1.95,0).scale.set(.88,1.08,.92);
+var n=M(g,new T.Mesh(new T.ConeGeometry(.1,.38,10),mt),0,1.85,.62);n.rotation.x=Math.PI/2;
+[-.28,.28].forEach(function(x){M(g,SP(.2,mt),x,2.1,.6).scale.set(1.4,.35,.6)});
+if(beard)M(g,SP(.55,mt),0,1.55,.3).scale.set(.8,.95,.6);
+M(g,new T.Mesh(new T.TorusGeometry(.7,.07,8,32),gold),0,2.4,0).rotation.x=Math.PI/2;
+g.scale.setScalar(s);return g}
+var ped=new T.Group();M(ped,BX(2.4,2.8,2.4,mar),0,1.9,0);M(ped,BX(2.9,.25,2.9,mar),0,3.42,0);
+var pl=new T.Mesh(new T.PlaneGeometry(2,1),new T.MeshStandardMaterial({map:plate([["ESKILI",120,"#c9a24b",150],["525/524 – 456/455 p.e.s.",44,"#f4efe6",290],["ΑΙΣΧΥΛΟΣ",48,"#c9a24b",390]],512,512,"#14234a"),roughness:.5}));pl.scale.set(1,1,1);pl.position.set(0,1.9,1.21);ped.add(pl);scene.add(ped);
+var mainBust=bust(1.45,true,mar);mainBust.position.y=3.55;scene.add(mainBust);var mg0=new T.Group();mg0.add(mainBust);scene.add(mg0);addGlow(mainBust,'A');
+var nm=new T.Sprite(new T.SpriteMaterial({map:plate([["ΑΙΣΧΥΛΟΣ",64,"#f4efe6",70],["ESKILI",190,"#c9a24b",210]],1024,300),transparent:true,depthWrite:false,fog:false}));nm.scale.set(10,2.93,1);nm.position.y=10.4;scene.add(nm);
+/* kolonat dorike dhe jonike */
+var fl2=fluteTex(),N=14;
+for(i=0;i<N;i++){var a=i/N*Math.PI*2,g=new T.Group(),ion=i%2===1;
+var fm=new T.MeshStandardMaterial({map:fl2,roughness:.4}),bm=mar;
+M(g,BX(2.4,.5,2.4,bm),0,.25,0);M(g,CY(.8,1,11,fm,32),0,6,0);M(g,CY(1,.8,.6,bm,32),0,11.8,0).geometry=new T.CylinderGeometry(ion?.95:1.3,.8,.6,32);M(g,BX(2.7,.4,2.7,bm),0,12.3,0);
+if(ion){[-1.1,1.1].forEach(function(x){M(g,new T.Mesh(new T.TorusGeometry(.38,.13,10,24),bm),x,11.7,0)})}
+g.position.set(Math.cos(a)*18,0,Math.sin(a)*18);g.rotation.y=Math.PI/2-a;scene.add(g);addGlow(g,null)}
+var arc=CY(19.6,19.6,.5,mar,96);arc.position.y=12.75;arc.castShadow=true;scene.add(arc);
+var fr=new T.Mesh(new T.CylinderGeometry(19.6,19.6,1.2,96,1,true),new T.MeshStandardMaterial({map:keyTex(23),roughness:.5,side:T.DoubleSide}));fr.position.y=13.6;scene.add(fr);
+var co=new T.Mesh(new T.RingGeometry(17.4,20.8,96),new T.MeshStandardMaterial({map:mar.map,roughness:.4,side:T.DoubleSide}));co.rotation.x=-Math.PI/2;co.position.y=14.25;scene.add(co);
+/* statuja */
+for(i=0;i<7;i++){var sa=(2*i+.5)/N*Math.PI*2*1+0,sg=new T.Group();M(sg,BX(1.1,1.6,1.1,mar),0,.8,0);var sb=bust(.75,i%2===0,mar);sb.position.y=1.6;sg.add(sb);sg.position.set(Math.cos(sa)*15.2,0,Math.sin(sa)*15.2);sg.rotation.y=-Math.PI/2-sa;scene.add(sg);addGlow(sg,null)}
+/* grimca */
+var pc=500,pp=new Float32Array(pc*3);for(i=0;i<pc;i++){var r=Math.random()*21,an=Math.random()*6.283;pp[i*3]=Math.cos(an)*r;pp[i*3+1]=Math.random()*15;pp[i*3+2]=Math.sin(an)*r}
+var pg=new T.BufferGeometry();pg.setAttribute('position',new T.BufferAttribute(pp,3));var pts=new T.Points(pg,new T.PointsMaterial({color:0xe8c872,size:.09,transparent:true,opacity:.6,depthWrite:false}));scene.add(pts);
+/* harta konceptuale */
+var lm=new T.MeshStandardMaterial({color:0xc9a24b,metalness:.4,roughness:.35,emissive:0x7a5a10,emissiveIntensity:.6});
+function mkNode(id,pos,from,r,col,delay,child){
+var o={kind:'node',id:id,v:0,t:0,rv:0,d:delay,ld:.9,child:child,pos:pos};
+var g=new T.Group();g.position.copy(pos);o.g=g;o.y0=pos.y;
+var core=new T.Mesh(new T.SphereGeometry(r,28,18),new T.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:.5,metalness:.5,roughness:.3}));
+var halo=new T.Mesh(new T.TorusGeometry(r*1.65,r*.07,8,48),gold);halo.rotation.x=Math.PI/2.4;
+var hb=new T.Mesh(new T.SphereGeometry(r*2.1,10,8),new T.MeshBasicMaterial({visible:false}));
+var lb=label(NAME[id],child?.8:1);lb.position.y=r+(child?1:1.1);
+g.add(core,halo,hb,lb);g.scale.setScalar(.001);scene.add(g);o.core=core;o.halo=halo;
+[core,hb,lb].forEach(function(m){m.userData.owner=o;hit.push(m)});
+var mid=from.clone().add(pos).multiplyScalar(.5);mid.y+=1.6;
+o.line=new T.Mesh(new T.TubeGeometry(new T.QuadraticBezierCurve3(from.clone(),mid,pos.clone()),44,.05,6,false),lm);o.line.visible=false;scene.add(o.line);
+nodes.push(o);byId[id]=o;return o}
+var org=new T.Vector3(0,4.5,0),MAIN=[["A",180,4.2],["B",240,5.5],["C",300,4.2],["D",0,5.2],["E",60,4.4],["F",120,5.5]];
+MAIN.forEach(function(m,k){var a=m[1]*Math.PI/180;mkNode(m[0],new T.Vector3(Math.cos(a)*7,m[2],Math.sin(a)*7),org,.55,0xc9a24b,.9+k*.55,false)});
+for(i=0;i<5;i++){var ca=(i-2)*.3;mkNode("W"+(i+1),new T.Vector3(Math.cos(ca)*13,3.2+(i%2)*1.6,Math.sin(ca)*13),byId.D.pos,.4,0x6f8fe0,4.6+i*.35,true)}
+/* kamera */
+var tw=null;
+function homeV(){return innerWidth/innerHeight<.8?{p:new T.Vector3(0,14,38),t:new T.Vector3(0,4,0)}:{p:new T.Vector3(0,10.5,25.5),t:new T.Vector3(0,4.2,0)}}
+function fly(p,t,d){C.autoRotate=false;tw={p0:cam.position.clone(),p1:p,t0:C.target.clone(),t1:t,k:0,d:d||1.5}}
+function home(){var h=homeV();fly(h.p,h.t,1.6)}
+cam.position.set(0,18,46);C.target.set(0,4,0);setTimeout(home,200);
+function focus(id){if(id==='Q')return;var p,t;if(id==='D'){t=new T.Vector3(9.5,4,0);p=new T.Vector3(15.5,7.5,9.5)}
+else{var n=byId[id];if(!n)return;var g=n.pos,d=new T.Vector3(g.x,0,g.z).normalize();t=g.clone();p=g.clone().addScaledVector(d,n.child?4.6:6.5);p.y+=2.4}fly(p,t)}
+/* mini skena */
+var mc=$('#mini'),MR=new T.WebGLRenderer({canvas:mc,antialias:true,alpha:true});MR.setPixelRatio(Math.min(devicePixelRatio,2));MR.outputEncoding=T.sRGBEncoding;
+var MS=new T.Scene(),MC=new T.PerspectiveCamera(40,2,.1,50);MC.position.set(0,3.4,8.2);MC.lookAt(0,1.3,0);
+MS.add(new T.AmbientLight(0xffffff,.75));var ml=new T.DirectionalLight(0xfff0d0,1.3);ml.position.set(3,6,5);MS.add(ml);var ml2=new T.PointLight(0xc9a24b,.8,20);ml2.position.set(-3,3,3);MS.add(ml2);
+var rock=new T.MeshStandardMaterial({color:0x8d8576,roughness:.9}),sea=new T.MeshStandardMaterial({color:0x1d4e89,roughness:.4}),wood=new T.MeshStandardMaterial({color:0x6b3f22}),sail=new T.MeshStandardMaterial({color:0x8a1f45,side:T.DoubleSide}),fire=new T.MeshStandardMaterial({color:0xff9a2e,emissive:0xff6a00,emissiveIntensity:.9}),mar2=mar.clone();mar2.side=T.DoubleSide;
+function mask(g,x,sad,mt,ry){var s=new T.Group();M(s,SP(.8,mt),0,0,0,false).scale.set(1,1.25,.45);[-.3,.3].forEach(function(p){M(s,SP(.15,dark),p,.3,.3,false).scale.set(1.5,.8,.5)});var mo=M(s,new T.Mesh(new T.TorusGeometry(.3,.06,8,24,Math.PI),dark),0,sad?-.45:-.2,.34,false);if(!sad)mo.rotation.z=Math.PI;s.position.set(x,1.5,0);s.rotation.y=ry;g.add(s)}
+var S={
+life:function(g){M(g,CY(2.1,2.3,.3,mar,40),0,.15,0);M(g,CY(1.7,1.8,.3,mar,40),0,.45,0);M(g,CY(.34,.42,2.3,mar,20),0,1.75,0);M(g,BX(1.1,.18,1.1,mar),0,3,0);M(g,SP(.5,gold),1.7,3.2,-.4)},
+educ:function(g){[0,1,2].forEach(function(i){M(g,BX(2.2-i*.2,.2,1.5-i*.1,mar),0,.1+i*.2,0)});M(g,CY(.3,.3,2.4,mar,20),0,1.15,0).rotation.z=Math.PI/2;[-1.25,1.25].forEach(function(x){M(g,CY(.42,.42,.14,gold,20),x,1.15,0).rotation.z=Math.PI/2})},
+stage:function(g){M(g,CY(2.6,2.7,.25,mar,40),0,.12,0);[-.7,.7].forEach(function(x,i){M(g,CY(.2,.34,1.4,i?gold:mar,14),x,.95,.6);M(g,SP(.22,i?mar:gold),x,1.85,.6)});for(var i=0;i<7;i++){var a=Math.PI*(.15+.7*i/6),x=Math.cos(a)*1.8,z=-Math.sin(a)*1.6-.2;M(g,CY(.14,.22,.9,mar,12),x,.7,z);M(g,SP(.15,mar),x,1.3,z)}},
+fame:function(g){mask(g,-1.1,true,mar,.35);mask(g,1.1,false,gold,-.35)},
+hist:function(g){M(g,BX(5.4,.25,3.2,mar),0,.12,0);M(g,BX(5,.25,2.8,mar),0,.37,0);for(var i=0;i<6;i++){var x=-2+i*.8;M(g,CY(.18,.22,1.9,mar,16),x,1.45,1);M(g,CY(.18,.22,1.9,mar,16),x,1.45,-1)}M(g,BX(4.8,.3,2.6,mar),0,2.55,0);M(g,BX(4.8,.1,2.8,mar),0,2.75,0);var sh=new T.Shape();sh.moveTo(-2.4,0);sh.lineTo(2.4,0);sh.lineTo(0,.85);sh.closePath();var p=new T.Mesh(new T.ExtrudeGeometry(sh,{depth:.2,bevelEnabled:false}),gold);p.position.set(0,2.8,1.2);g.add(p);var p2=p.clone();p2.position.z=-1.4;g.add(p2)},
+legacy:function(g){M(g,CY(1.1,1.1,.12,gold,40),0,.06,0);for(var i=0;i<6;i++){var r0=1.3+i*.42,h=.28+i*.26,pt=[new T.Vector2(r0,0),new T.Vector2(r0+.4,0),new T.Vector2(r0+.4,h),new T.Vector2(r0,h)];var m=new T.Mesh(new T.LatheGeometry(pt,40,0,Math.PI),mar2);g.add(m)}},
+prom:function(g){M(g,new T.Mesh(new T.DodecahedronGeometry(1.1),rock),0,1.2,0).scale.set(1.1,1.2,1);[[-.3,3,.2,.35],[.2,3.15,-.1,.45],[.5,2.95,.3,.3]].forEach(function(p){M(g,new T.Mesh(new T.ConeGeometry(p[3]*.8,p[3]*3,10),fire),p[0],p[1],p[2],false)});for(var i=0;i<4;i++){M(g,new T.Mesh(new T.TorusGeometry(.22,.05,8,16),gold),-.9+i*.12,1.5-i*.3,1.1).rotation.y=i%2?0:Math.PI/2}},
+ores:function(g){M(g,BX(5,.3,2.2,mar),0,.15,0);[-1.7,0,1.7].forEach(function(x){M(g,CY(.28,.34,2.4,mar,18),x,1.5,0)});M(g,BX(4.8,.32,1.2,mar),0,2.86,0);M(g,SP(.5,gold),0,3.5,0)},
+pers:function(g){M(g,CY(3.3,3.3,.2,sea,48),0,0,0);[[-1.6,.2,.3],[0,-1,-.2],[1.5,.9,.5]].forEach(function(p){var s=new T.Group();M(s,BX(1.4,.35,.55,wood),0,.2,0);M(s,CY(.04,.04,1.5,wood,8),0,1,0);M(s,BX(.05,1,.8,sail),0,1.1,0);s.position.set(p[0],.15,p[1]);s.rotation.y=p[2];g.add(s)})},
+seven:function(g){M(g,CY(2.9,3,.25,mar,48),0,.12,0);for(var i=0;i<7;i++){var a=i/7*Math.PI*2,x=Math.cos(a)*2.1,z=Math.sin(a)*2.1;M(g,CY(.3,.34,1.5,mar,14),x,1,z);M(g,new T.Mesh(new T.ConeGeometry(.42,.55,14),gold),x,2,z)}M(g,SP(.35,dark),0,.5,0)},
+suppl:function(g){M(g,CY(2.6,2.7,.2,mar,40),0,.1,0);M(g,CY(.8,.95,.9,mar,24),0,.65,0);M(g,CY(.65,.65,.14,gold,24),0,1.17,0);for(var i=0;i<9;i++){var a=i/9*Math.PI*2,x=Math.cos(a)*1.9,z=Math.sin(a)*1.9;M(g,CY(.15,.26,1,mar,12),x,.7,z);M(g,SP(.17,mar),x,1.3,z)}}};
+var mgr=null,miniOn=false;
+function setMini(key){if(mgr){MS.remove(mgr);mgr.traverse(function(o){if(o.geometry)o.geometry.dispose()})}mgr=null;miniOn=false;if(!key)return;mgr=new T.Group();S[key](mgr);MS.add(mgr);miniOn=true;sizeMini()}
+function sizeMini(){var w=mc.clientWidth,h=mc.clientHeight;if(!w||!h)return;MR.setSize(w,h,false);MC.aspect=w/h;MC.updateProjectionMatrix()}
+/* paneli */
+var panel=$('#panel'),cur=null;
+function open(id){if(!P[id])return;cur=id;panel.classList.add('on');panel.classList.toggle('wide',id==='E'||id==='Q');var b=$('#pbody');b.innerHTML=P[id].html;b.scrollTop=0;$('.art').style.display=P[id].s?'block':'none';setMini(P[id].s);
+var i=ORDER.indexOf(id);$('#prev').disabled=i<=0;$('#next').disabled=i>=ORDER.length-1;$('#cnt').textContent=(i+1)+' / '+ORDER.length;focus(id);$('#hint').style.opacity=0;
+if(id==='E')initTL();if(id==='Q')initQuiz()}
+function closeP(){panel.classList.remove('on');cur=null;miniOn=false;home()}
+$('#close').onclick=closeP;$('#reset').onclick=closeP;
+$('#prev').onclick=function(){var i=ORDER.indexOf(cur);if(i>0)open(ORDER[i-1])};
+$('#next').onclick=function(){var i=ORDER.indexOf(cur);if(i<ORDER.length-1)open(ORDER[i+1])};
+document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(b)open(b.dataset.open)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)closeP()});
+function initTL(){var el=$('#tl'),col={Jeta:'#c9a24b',Historia:'#4a74c9',Vepra:'#b5532f'};
+el.innerHTML='<div class="trk">'+TL.map(function(e,k){return '<button class="dot'+(k===0?' on':'')+'" data-i="'+k+'" style="--c:'+col[e.g]+'"><i></i><span>'+e.y+'</span></button>'}).join('')+'</div><div class="tld" id="tld"></div>';
+function show(i){var e=TL[i];$('#tld').innerHTML='<span class="tag" style="background:'+col[e.g]+'">'+e.g+'</span><h4>'+e.y+' p.e.s. · '+e.t+'</h4><p>'+e.p+'</p>'}
+show(0);el.querySelector('.trk').onclick=function(ev){var b=ev.target.closest('.dot');if(!b)return;el.querySelectorAll('.dot').forEach(function(d){d.classList.remove('on')});b.classList.add('on');show(+b.dataset.i);b.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'})}}
+function initQuiz(){var el=$('#qz'),qs=QZ.map(function(q){return{q:q.q,e:q.e,c:q.o[0],o:shuf(q.o.slice())}}),i=0,sc=0,done=false;
+function show(){if(i>=qs.length){var m=sc>=9?"Shkëlqyeshëm! Je njohës i vërtetë i Eskilit.":sc>=6?"Shumë mirë! Rishiko disa degë të hartës për ta përsosur.":"Eksploro hartën 3D dhe provo përsëri.";el.innerHTML='<div class="qp"><i style="width:100%"></i></div><div class="res"><div class="big">'+sc+' / '+qs.length+'</div><p>'+m+'</p><button class="go" id="rs">Provo përsëri</button><p class="by">Punoi: Eneo Kaziu</p></div>';return}
+done=false;var q=qs[i];el.innerHTML='<div class="qp"><i style="width:'+i/qs.length*100+'%"></i></div><p class="kick">Pyetja '+(i+1)+' / '+qs.length+'</p><h3 class="qq">'+q.q+'</h3>'+q.o.map(function(o,k){return '<button class="opt" data-k="'+k+'">'+o+'</button>'}).join('')+'<div id="qf"></div>'}
+el.onclick=function(e){var b=e.target.closest('.opt');if(b&&!done){done=true;var q=qs[i],ok=q.o[+b.dataset.k]===q.c;if(ok)sc++;el.querySelectorAll('.opt').forEach(function(x){x.disabled=true;if(q.o[+x.dataset.k]===q.c)x.classList.add('ok')});if(!ok)b.classList.add('bad');$('#qf').innerHTML='<p class="fb"><b>'+(ok?'Saktë.':'Jo saktë. Përgjigja e saktë: '+q.c+'.')+'</b> '+q.e+'</p><button class="go" id="nx">'+(i===qs.length-1?'Shiko rezultatin':'Pyetja tjetër')+'</button>';return}
+if(e.target.id==='nx'){i++;show()}if(e.target.id==='rs'){i=0;sc=0;qs.forEach(function(q){shuf(q.o)});show()}};show()}
+/* ndërveprimi 3D */
+var ray=new T.Raycaster(),pt=new T.Vector2(),hov=null,down=null;
+function pick(e){var r=cvs.getBoundingClientRect();pt.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);ray.setFromCamera(pt,cam);var h=ray.intersectObjects(hit,false);return h.length?h[0].object.userData.owner:null}
+function setHover(o){if(o===hov)return;if(hov)hov.t=0;hov=o;if(o)o.t=1;cvs.style.cursor=o&&(o.kind==='node'||o.open)?'pointer':'grab'}
+cvs.addEventListener('pointermove',function(e){if(e.pointerType!=='touch'&&!(e.buttons))setHover(pick(e))});
+cvs.addEventListener('pointerdown',function(e){down=[e.clientX,e.clientY]});
+cvs.addEventListener('pointerup',function(e){if(!down)return;var d=Math.hypot(e.clientX-down[0],e.clientY-down[1]);down=null;if(d>6)return;var o=pick(e);if(o){var id=o.kind==='node'?o.id:o.open;if(id)open(id)}});
+function rs(){var w=innerWidth,h=innerHeight;R.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();sizeMini()}
+addEventListener('resize',rs);rs();
+var clock=new T.Clock();
+function loop(){requestAnimationFrame(loop);var dt=Math.min(clock.getDelta(),.05),t=clock.elapsedTime;
+nodes.forEach(function(n,i){var lp=clamp((t-n.d)/n.ld,0,1),np=clamp((t-n.d-n.ld)/.7,0,1);var cnt=n.line.geometry.index.count;n.line.geometry.setDrawRange(0,Math.floor(cnt*ease(lp)/3)*3);n.line.visible=lp>0;n.rv=np?back(np):0;n.v+=(n.t-n.v)*.15;n.g.scale.setScalar(Math.max(.001,n.rv*(1+.22*n.v)));n.g.position.y=n.y0+Math.sin(t*1.1+i)*.1;n.halo.rotation.z+=dt*.8;n.core.material.emissiveIntensity=.5+.9*n.v});
+glow.forEach(function(o){o.v+=(o.t-o.v)*.15;o.mats.forEach(function(m){m.emissiveIntensity=o.v*.55})});
+pts.rotation.y+=dt*.02;
+if(tw){tw.k+=dt/tw.d;var k=ease(Math.min(tw.k,1));cam.position.lerpVectors(tw.p0,tw.p1,k);C.target.lerpVectors(tw.t0,tw.t1,k);if(tw.k>=1)tw=null}
+C.update();R.render(scene,cam);
+if(miniOn&&mgr&&panel.classList.contains('on')){mgr.rotation.y+=dt*.6;MR.render(MS,MC)}}
+loop();
+var ld=$('#ld');ld.style.opacity=0;setTimeout(function(){ld.style.display='none'},950);
+setTimeout(function(){if(!cur)$('#hint').style.opacity=1},4500);$('#hint').style.opacity=0;
+}
+var fontsReady=Promise.race([document.fonts?document.fonts.load('700 40px Cinzel'):Promise.resolve(),new Promise(function(r){setTimeout(r,1800)})]);
+fontsReady.then(init,init);
+})();
+</script>
+</body>
+</html>
